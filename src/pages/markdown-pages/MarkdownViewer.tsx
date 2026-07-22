@@ -13,7 +13,7 @@ export default function MarkdownViewer() {
 
   async function loadPage(pagePath: string) {
     try {
-      let res = await fetch("/fragments".concat(pagePath));
+      let res = await fetch("/markdown".concat(pagePath));
       let html = await res.text();
       setContent(html);
     } catch {
@@ -35,7 +35,12 @@ export default function MarkdownViewer() {
   return (
     <>
       <Header />
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <div style={{
+        paddingLeft: "1em",
+        paddingRight: "1em"
+      }}>
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+      </div>
       <Footer />
     </>
   );

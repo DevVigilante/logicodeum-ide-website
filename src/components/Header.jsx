@@ -27,7 +27,8 @@ export default function Header() {
 
     const navItems = [
         { label: "Home", path: "/" },
-        { label: "Privacy Policy", path: "/privacy" }
+        { label: "Terms and Conditions", path: "/m/terms-and-conditions.html" },
+        { label: "Privacy Policy", path: "/m/privacy-policy.html" }
     ];
     return (
         <>
