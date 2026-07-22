@@ -1,7 +1,16 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
+    "types": ["node"],
+    "skipLibCheck": true
+  },
+  "include": [
+    "src",
+    "markdown-builder",
+    "scripts"
   ]
 }
