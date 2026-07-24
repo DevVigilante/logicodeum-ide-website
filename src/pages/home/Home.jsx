@@ -25,7 +25,8 @@ export default function Home() {
                     gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
                     gap: "24px",
                     maxWidth: "1200px",
-                    margin: "auto"
+                    margin: "auto",
+                    marginBottom: "1em"
                 }}
             >
                 <Discord />
