@@ -7,8 +7,6 @@ import { FileSystemNode, FileNode, FolderNode } from "./FileSystem.js";
 import { compile, run } from "@mdx-js/mdx";
 import { renderToStaticMarkup } from "react-dom/server";
 import * as runtime from "react/jsx-runtime";
-
-let navConf: FileSystemNode[] = [];
 // const [input, output] = process.argv.slice(2);
 async function readDirectories(dir: string): Promise<FileSystemNode[]> {
   const children: FileSystemNode[] = [];
@@ -42,8 +40,8 @@ async function readDirectories(dir: string): Promise<FileSystemNode[]> {
 }
 
 async function compileToHtml(file: FileNode) {
-  let path: string = file.path;
-  let source: string = await fs.readFileSync(path, "utf-8");
+  const path: string = file.path;
+  const source: string = await fs.readFileSync(path, "utf-8");
   const { content } = matter(source);
   const compiled = await compile(content, {
     outputFormat: "function-body",
@@ -51,8 +49,8 @@ async function compileToHtml(file: FileNode) {
   const { default: MDXContent } = await run(compiled, runtime);
   const htmlContent = renderToStaticMarkup(MDXContent({}));
 
-  let outputFolder : string = "./public/markdown".concat(path.replace("./markdown", "").slice(0, -file.name.length));
-  let outputFile : string = "./public/markdown".concat(path.replace("./markdown", "").replace(".md", ".html"));
+  const outputFolder : string = "./public/markdown".concat(path.replace("./markdown", "").slice(0, -file.name.length));
+  const outputFile : string = "./public/markdown".concat(path.replace("./markdown", "").replace(".md", ".html"));
   
   await fs.mkdirSync(outputFolder, { recursive: true });
   await fs.writeFileSync(outputFile, htmlContent);
@@ -60,7 +58,7 @@ async function compileToHtml(file: FileNode) {
 
 readDirectories("./markdown")
   .then((value) => {
-    let conf = JSON.stringify(value, null, 2);
+    const conf = JSON.stringify(value, null, 2);
     fs.mkdirSync("./public/markdown", { recursive: true });
     fs.writeFileSync("./public/markdown/config.json", conf);
   })
