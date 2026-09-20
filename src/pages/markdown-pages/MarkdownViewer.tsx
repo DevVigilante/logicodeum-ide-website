@@ -25,6 +25,7 @@ export default function MarkdownViewer() {
     const markdownFilePath: string = location.pathname.replace(/^\/m/, "");
 
     if (markdownFilePath == "") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setContent(ErrorHtmlView(markdownFilePath));
     } else {
       loadPage(markdownFilePath);
