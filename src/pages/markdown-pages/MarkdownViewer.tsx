@@ -13,8 +13,8 @@ export default function MarkdownViewer() {
 
   async function loadPage(pagePath: string) {
     try {
-      let res = await fetch("/markdown".concat(pagePath));
-      let html = await res.text();
+      const res = await fetch("/markdown".concat(pagePath));
+      const html = await res.text();
       setContent(html);
     } catch {
       setContent(ErrorHtmlView("Failed to load content"));
@@ -22,7 +22,7 @@ export default function MarkdownViewer() {
   }
 
   useEffect(() => {
-    let markdownFilePath: string = location.pathname.replace(/^\/m/, "");
+    const markdownFilePath: string = location.pathname.replace(/^\/m/, "");
 
     if (markdownFilePath == "") {
       setContent(ErrorHtmlView(markdownFilePath));
